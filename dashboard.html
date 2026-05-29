@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DzaireyBot — Configuration</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+<div id="sidebar-overlay"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <div class="avatar-placeholder" style="width:40px;height:40px;font-size:16px;border-radius:50%">D</div>
+    <div>
+      <div class="bot-name">DzaireyBot</div>
+      <div class="bot-tag">#0042</div>
+    </div>
+    <div class="status-dot"></div>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Général</div>
+    <a href="index.html" class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Vue d'ensemble
+    </a>
+    <a href="dashboard.html" class="nav-item active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 19.07a10 10 0 0 1 0-14.14"/><path d="M22 12h-2M4 12H2M12 22v-2M12 4V2"/></svg>
+      Configuration
+    </a>
+    <a href="commands.html" class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+      Commandes
+    </a>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Statistiques</div>
+    <a href="index.html#servers" class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Serveurs
+    </a>
+    <a href="index.html#activity" class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      Activité
+    </a>
+  </div>
+
+  <div class="sidebar-footer">
+    <a href="#" class="nav-item" onclick="showToast('Déconnexion simulée.','warning');return false;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      Déconnexion
+    </a>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+  <header class="topbar">
+    <button class="btn-menu" id="btn-menu" aria-label="Menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <h1 class="topbar-title"><span>Configuration</span> du serveur</h1>
+  </header>
+
+  <div class="content">
+    <div class="page-header">
+      <h1>Configuration</h1>
+      <p>Personnalisez DzaireyBot pour chaque serveur Discord.</p>
+    </div>
+
+    <!-- SERVER SELECTOR -->
+    <div class="card" style="margin-bottom:20px">
+      <div class="card-body">
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label">Sélectionner un serveur</label>
+          <select class="form-select" id="server-select" style="max-width:400px">
+            <option value="" disabled selected>— Choisir un serveur —</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <form id="config-form">
+      <div class="grid-2" style="margin-bottom:20px">
+
+        <!-- GENERAL SETTINGS -->
+        <div class="card">
+          <div class="card-header">
+            <h2>Paramètres généraux</h2>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label class="form-label">Préfixe des commandes</label>
+              <input type="text" class="form-input" value="!" placeholder="ex : !, /, $" maxlength="5" style="max-width:100px">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Langue du bot</label>
+              <select class="form-select">
+                <option selected>Français</option>
+                <option>English</option>
+                <option>Español</option>
+                <option>Deutsch</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom:0">
+              <label class="form-label">Salon de logs</label>
+              <select class="form-select">
+                <option value="">(aucun)</option>
+                <option selected>#logs-bot</option>
+                <option>#modération</option>
+                <option>#général</option>
+                <option>#admin-logs</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- WELCOME -->
+        <div class="card">
+          <div class="card-header">
+            <h2>Message de bienvenue</h2>
+          </div>
+          <div class="card-body">
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <div class="toggle-title">Activer le message de bienvenue</div>
+                <div class="toggle-desc">Envoyer un message quand un membre rejoint</div>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <div class="toggle-title">Message de départ</div>
+                <div class="toggle-desc">Notifier quand un membre quitte</div>
+              </div>
+              <label class="toggle">
+                <input type="checkbox">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="form-group" style="margin-top:16px;margin-bottom:0">
+              <label class="form-label">Salon de bienvenue</label>
+              <select class="form-select">
+                <option>#bienvenue</option>
+                <option>#général</option>
+                <option>#arrivals</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- AUTO-ROLE -->
+        <div class="card">
+          <div class="card-header">
+            <h2>Rôle automatique</h2>
+          </div>
+          <div class="card-body">
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <div class="toggle-title">Attribution automatique de rôle</div>
+                <div class="toggle-desc">Donner un rôle lors de l'arrivée</div>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="form-group" style="margin-top:16px;margin-bottom:0">
+              <label class="form-label">Rôle à attribuer</label>
+              <select class="form-select">
+                <option>@Membre</option>
+                <option>@Nouveau</option>
+                <option>@Visiteur</option>
+                <option>@Communauté</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODERATION -->
+        <div class="card">
+          <div class="card-header">
+            <h2>Modération automatique</h2>
+          </div>
+          <div class="card-body">
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <div class="toggle-title">Anti-spam</div>
+                <div class="toggle-desc">Mute automatique en cas de spam</div>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <div class="toggle-title">Filtre de mots</div>
+                <div class="toggle-desc">Supprimer les messages avec mots bannis</div>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <div class="toggle-title">Anti-invitations Discord</div>
+                <div class="toggle-desc">Supprimer les liens d'invitation</div>
+              </div>
+              <label class="toggle">
+                <input type="checkbox">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <div class="toggle-title">Anti-liens externes</div>
+                <div class="toggle-desc">Bloquer les liens non autorisés</div>
+              </div>
+              <label class="toggle">
+                <input type="checkbox">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- LEVELS -->
+        <div class="card">
+          <div class="card-header">
+            <h2>Système de niveaux</h2>
+          </div>
+          <div class="card-body">
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <div class="toggle-title">Activer le système XP</div>
+                <div class="toggle-desc">Récompenser les membres actifs</div>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <div class="toggle-title">Notification de niveau</div>
+                <div class="toggle-desc">Annoncer quand un membre monte de niveau</div>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="form-group" style="margin-top:16px;margin-bottom:0">
+              <label class="form-label">Multiplicateur d'XP</label>
+              <select class="form-select">
+                <option>x1 (normal)</option>
+                <option selected>x1.5</option>
+                <option>x2</option>
+                <option>x3 (weekend)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- MUSIC -->
+        <div class="card">
+          <div class="card-header">
+            <h2>Module musique</h2>
+          </div>
+          <div class="card-body">
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <div class="toggle-title">Activer le module musique</div>
+                <div class="toggle-desc">Permettre la lecture de musique</div>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <div class="toggle-title">DJ uniquement</div>
+                <div class="toggle-desc">Restreindre aux membres avec le rôle DJ</div>
+              </div>
+              <label class="toggle">
+                <input type="checkbox">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="form-group" style="margin-top:16px;margin-bottom:0">
+              <label class="form-label">Volume par défaut</label>
+              <input type="range" min="0" max="100" value="50"
+                style="width:100%;accent-color:var(--accent);cursor:pointer;"
+                oninput="this.nextElementSibling.textContent=this.value+'%'">
+              <span style="font-size:13px;color:var(--text-muted)">50%</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /grid-2 -->
+
+      <!-- SAVE -->
+      <div style="display:flex;gap:12px;justify-content:flex-end">
+        <button type="button" class="btn btn-secondary" onclick="showToast('Modifications annulées.','warning')">Annuler</button>
+        <button type="submit" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          Sauvegarder
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+</body>
+</html>
